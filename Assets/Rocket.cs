@@ -6,7 +6,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +25,14 @@ public class Rocket : MonoBehaviour
         {
             _rigidbody.AddRelativeForce(Vector3.up);
         }
-        
+
         if (Input.GetKey(KeyCode.A))
         {
-            print("Rotating left");
+            transform.Rotate(Vector3.forward);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            print("Rotating right");
+            transform.Rotate(-Vector3.forward);
         }
     }
 }
