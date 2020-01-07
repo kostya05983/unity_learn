@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour
@@ -23,6 +24,26 @@ public class Rocket : MonoBehaviour
     {
         Thrust();
         Rotate();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Friendly":
+            {
+                print("Ок");
+                break;
+            }
+            case "Fuel":
+            {
+                print("");
+                break;
+            }
+            default:
+                print("Dead");
+                break;
+        }
     }
 
     private void Thrust()
