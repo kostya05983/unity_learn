@@ -525,5 +525,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d116a891310cafd48a59f4257cbfe6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 10
-  mainThrust: 1
+  rcsThrust: 100
+  mainThrust: 3
