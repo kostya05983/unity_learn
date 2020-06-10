@@ -9,9 +9,14 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 10f;
     [SerializeField] private float mainThrust = 10f;
+    
     [SerializeField] private AudioClip mainEngine;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip loadLevelSound;
+    
+    [SerializeField] private ParticleSystem mainEngineParticles;
+    [SerializeField] private ParticleSystem deathParticles;
+    [SerializeField] private ParticleSystem loadLevelParticles;
 
     private Rigidbody _rigidbody;
     private AudioSource _audioSource;
@@ -35,8 +40,11 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RespondToThrustInput();
-        RespondToRotateInput();
+        if (state == State.Alive)
+        {
+            RespondToThrustInput();
+            RespondToRotateInput();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -68,6 +76,7 @@ public class Rocket : MonoBehaviour
         state = State.Transending;
         _audioSource.Stop();
         _audioSource.PlayOneShot(loadLevelSound);
+        loadLevelParticles.Play();
         Invoke("LoadNextScene", 1f); //todo parameterise time
     }
 
@@ -76,6 +85,7 @@ public class Rocket : MonoBehaviour
         state = State.Dying;
         _audioSource.Stop();
         _audioSource.PlayOneShot(deathSound);
+        deathParticles.Play();
         Invoke("GameOver", 1f);
     }
 
@@ -98,6 +108,7 @@ public class Rocket : MonoBehaviour
         else
         {
             _audioSource.Stop();
+            mainEngineParticles.Stop();
         }
     }
 
@@ -108,6 +119,7 @@ public class Rocket : MonoBehaviour
         {
             _audioSource.PlayOneShot(mainEngine);
         }
+        mainEngineParticles.Play();
     }
 
     private void RespondToRotateInput()
