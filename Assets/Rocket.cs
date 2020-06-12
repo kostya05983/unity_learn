@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class Rocket : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Rocket : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private AudioSource _audioSource;
+    private bool isCollisionDetect = true;
 
     enum State
     {
@@ -46,6 +48,23 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();    
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextScene();
+        }
+        else if (Input.GetKey(KeyCode.C))
+        {
+            isCollisionDetect = !isCollisionDetect;
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -54,6 +73,8 @@ public class Rocket : MonoBehaviour
         {
             return;
         }
+
+        if (!isCollisionDetect) return;
 
         switch (other.gameObject.tag)
         {
@@ -82,7 +103,7 @@ public class Rocket : MonoBehaviour
     }
 
     private void StartDeathSequence()
-    { 
+    {
         state = State.Dying;
         _audioSource.Stop();
         _audioSource.PlayOneShot(deathSound);
