@@ -51,7 +51,7 @@ public class Rocket : MonoBehaviour
 
         if (Debug.isDebugBuild)
         {
-            RespondToDebugKeys();    
+            RespondToDebugKeys();
         }
     }
 
@@ -118,7 +118,18 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1); // todo allow for more than 2 levels
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex;
+        if (currentSceneIndex == SceneManager.sceneCountInBuildSettings-1)
+        {
+            nextSceneIndex = 0;
+        }
+        else
+        {
+            nextSceneIndex = currentSceneIndex + 1;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex); // todo allow for more than 2 levels
     }
 
     private void RespondToThrustInput()
