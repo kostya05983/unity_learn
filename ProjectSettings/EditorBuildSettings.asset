@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/level1.unity
+    path: Assets/Levels/basic flight.unity
     guid: 79363a0dfbd786644a7d0bef49654cf4
   - enabled: 1
-    path: Assets/Levels/level2.unity
+    path: Assets/Levels/flight and run.unity
     guid: f02c66c54d31b7541b7ee0d46e4fc847
+  - enabled: 1
+    path: Assets/Levels/find platform.unity
+    guid: ab8ae9db3ab50c6488a052030ae11267
+  - enabled: 1
+    path: Assets/Levels/keep your eyes open.unity
+    guid: 8f22f77e3116cfd4e9fcae1903eaba6a
+  - enabled: 1
+    path: Assets/Levels/jump rocket up.unity
+    guid: 668eb2fe8aa788642a60a9c0ad5a5539
   m_configObjects: {}
