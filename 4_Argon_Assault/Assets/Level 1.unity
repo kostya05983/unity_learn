@@ -374,7 +374,7 @@ MonoBehaviour:
   circuit: {fileID: 1354000620}
   lookAheadForTargetOffset: 2
   lookAheadForTargetFactor: 0.1
-  lookAheadForSpeedOffset: 5
+  lookAheadForSpeedOffset: 2
   lookAheadForSpeedFactor: 0.2
   progressStyle: 0
   pointToPointThreshold: 4
@@ -723,6 +723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60227985419237149a481f1a5b5e10ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xSpeed: 15
+  xRange: 5.33
 --- !u!1001 &5544397859654790831
 PrefabInstance:
   m_ObjectHideFlags: 0
