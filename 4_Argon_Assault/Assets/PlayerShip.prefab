@@ -98,6 +98,10 @@ MonoBehaviour:
   ySpeed: 15
   yMinRange: -8.41
   yMaxRange: 8.35
+  positionPitchFactor: -5
+  controlPitchFactor: -20
+  positionYawFactor: 3
+  controlRollFactor: -20
 --- !u!1 &6079244176862667263
 GameObject:
   m_ObjectHideFlags: 0
