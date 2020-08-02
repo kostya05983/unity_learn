@@ -1112,6 +1112,12 @@ Transform:
   m_Father: {fileID: 1354000621}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &907937445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1752753470, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5544397859654790831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1007620905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1527,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1484012973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 183000274, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79,
+    type: 3}
+  m_PrefabInstance: {fileID: 5544397859654790831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510568576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1859,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 534669905}
     m_Modifications:
+    - target: {fileID: 183000274, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79, type: 3}
+      propertyPath: m_Name
+      value: Gun left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752753470, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79, type: 3}
+      propertyPath: m_Name
+      value: Gun Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966123507, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79, type: 3}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966123507, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79, type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1484012973}
+    - target: {fileID: 1966123507, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79, type: 3}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 907937445}
     - target: {fileID: 2138222227614703977, guid: 6379ea3f8a6e9cb4cb23b54b97a53f79,
         type: 3}
       propertyPath: deathFx
