@@ -79,7 +79,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030776934}
-  m_Text: 0,0
+  m_Text: 0,-1
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -435,7 +435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b75fccb007a3f674fa0a5e8f67c768d4, type: 2}
+  - {fileID: 2100000, guid: 4d77ae47e7f2f4d42b60d85cddf2b287, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -614,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bba7ef5ec56c14f8774d6e5d4f0093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 10
 --- !u!114 &7379241505508524823
 MonoBehaviour:
   m_ObjectHideFlags: 0
