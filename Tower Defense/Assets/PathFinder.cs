@@ -33,6 +33,8 @@ public class PathFinder : MonoBehaviour
         {
             var searchCenter = queue.Dequeue();
             HaltIfEndFound(searchCenter);
+            ExploreNeighbours(searchCenter);
+            searchCenter.IsExplored = true;
         }
     }
 
@@ -45,14 +47,30 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    private void ExploreNeighbours()
+    private void ExploreNeighbours(WayPoint from)
     {
+        if (!isRunning)
+        {
+            return;
+        }
+
         foreach (var direction in directions)
         {
-            Vector2Int explorationCoordinates = startWaypoint.GetGridPos() + direction;
-            print("Exploring" + explorationCoordinates);
-            if (grid.ContainsKey(explorationCoordinates)) grid[explorationCoordinates].SetTopColor(Color.blue);
+            Vector2Int neighbourCoordinates = from.GetGridPos() + direction;
+            print("Exploring" + neighbourCoordinates);
+            if (grid.ContainsKey(neighbourCoordinates))
+            {
+                QueueNewNeighbours(neighbourCoordinates);
+            }
         }
+    }
+
+    private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
+    {
+        WayPoint neighbour = grid[neighbourCoordinates];
+        if (neighbour.IsExplored) return;
+        neighbour.SetTopColor(Color.blue);
+        queue.Enqueue(neighbour);
     }
 
     private void ColorStartAndEnd()

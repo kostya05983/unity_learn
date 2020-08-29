@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
+    public bool IsExplored = false; 
     private Vector2Int gridPos;
 
     const int gridSize = 10;
