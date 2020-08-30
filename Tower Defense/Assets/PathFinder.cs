@@ -9,6 +9,7 @@ public class PathFinder : MonoBehaviour
     Dictionary<Vector2Int, WayPoint> grid = new Dictionary<Vector2Int, WayPoint>();
     Queue<WayPoint> queue = new Queue<WayPoint>();
     private bool isRunning = true;
+    WayPoint searchCenter; // the current searchCenter
 
     private Vector2Int[] directions =
     {
@@ -31,23 +32,22 @@ public class PathFinder : MonoBehaviour
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue();
-            HaltIfEndFound(searchCenter);
-            ExploreNeighbours(searchCenter);
+            searchCenter = queue.Dequeue();
+            HaltIfEndFound();
+            ExploreNeighbours();
             searchCenter.IsExplored = true;
         }
     }
 
-    private void HaltIfEndFound(WayPoint searchCenter)
+    private void HaltIfEndFound()
     {
         if (searchCenter == endWaypoint)
         {
-            print("Path finder stopped");
             isRunning = false;
         }
     }
 
-    private void ExploreNeighbours(WayPoint from)
+    private void ExploreNeighbours()
     {
         if (!isRunning)
         {
@@ -56,7 +56,7 @@ public class PathFinder : MonoBehaviour
 
         foreach (var direction in directions)
         {
-            Vector2Int neighbourCoordinates = from.GetGridPos() + direction;
+            Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
             print("Exploring" + neighbourCoordinates);
             if (grid.ContainsKey(neighbourCoordinates))
             {
@@ -68,9 +68,10 @@ public class PathFinder : MonoBehaviour
     private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
     {
         WayPoint neighbour = grid[neighbourCoordinates];
-        if (neighbour.IsExplored) return;
+        if (neighbour.IsExplored || queue.Contains(neighbour)) return;
         neighbour.SetTopColor(Color.blue);
         queue.Enqueue(neighbour);
+        neighbour.ExploredFrom = searchCenter;
     }
 
     private void ColorStartAndEnd()
