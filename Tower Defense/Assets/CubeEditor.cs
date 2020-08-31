@@ -30,7 +30,6 @@ public class CubeEditor : MonoBehaviour
 
     private void UpdateLabel()
     {
-        int gridSize = _wayPoint.GetGridSize();
         TextMesh _textMesh = GetComponentInChildren<TextMesh>();
         var labelText = _wayPoint.GetGridPos().x  + "," + _wayPoint.GetGridPos().y ;
         _textMesh.text = labelText;

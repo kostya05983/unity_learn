@@ -10,6 +10,7 @@ public class PathFinder : MonoBehaviour
     Queue<WayPoint> queue = new Queue<WayPoint>();
     private bool isRunning = true;
     WayPoint searchCenter; // the current searchCenter
+    private List<WayPoint> path = new List<WayPoint>();
 
     private Vector2Int[] directions =
     {
@@ -19,15 +20,30 @@ public class PathFinder : MonoBehaviour
         Vector2Int.left
     };
 
-    // Start is called before the first frame update
-    void Start()
+    public List<WayPoint> GetPath()
     {
         LoadBlocks();
         ColorStartAndEnd();
-        PathFind();
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
     }
 
-    private void PathFind()
+    private void CreatePath()
+    {
+        path.Add(endWaypoint);
+
+        WayPoint previous = endWaypoint.ExploredFrom;
+        while (previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.ExploredFrom;
+        }
+
+        path.Reverse();
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && isRunning)
