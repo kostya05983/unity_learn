@@ -18,8 +18,7 @@ public class EnemyMovement : MonoBehaviour
         foreach (var block in path)
         {
             transform.position = block.transform.position;
-            print("Visiting: " + block);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
 
         print("Ending patrol");
