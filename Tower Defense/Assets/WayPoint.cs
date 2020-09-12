@@ -7,10 +7,11 @@ public class WayPoint : MonoBehaviour
 {
     public bool IsExplored = false;
     public WayPoint ExploredFrom;
-    private Vector2Int gridPos;
     public bool isPlaceable = true;
 
 
+    [SerializeField] Tower towerPrefab;
+    private Vector2Int gridPos;
     const int gridSize = 10;
 
     public int GetGridSize()
@@ -30,6 +31,8 @@ public class WayPoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isPlaceable)
         {
+            Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            isPlaceable = false;
             print(gameObject.name + "I'm here motherfucker'");
         }
     }
