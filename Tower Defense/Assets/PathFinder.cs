@@ -33,7 +33,6 @@ public class PathFinder : MonoBehaviour
     private void CalculatePath()
     {
         LoadBlocks();
-        ColorStartAndEnd();
         BreadthFirstSearch();
         CreatePath();
     }
@@ -94,15 +93,8 @@ public class PathFinder : MonoBehaviour
     {
         WayPoint neighbour = grid[neighbourCoordinates];
         if (neighbour.IsExplored || queue.Contains(neighbour)) return;
-        neighbour.SetTopColor(Color.blue);
         queue.Enqueue(neighbour);
         neighbour.ExploredFrom = searchCenter;
-    }
-
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.red);
     }
 
     private void LoadBlocks()
