@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 4365782655229697806}
-  targetEnemy: {fileID: 0}
   attackRange: 40
   projectileParticle: {fileID: 8161417391309444570}
 --- !u!1001 &4366506404870237030
@@ -210,6 +209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bullets
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823509807139589654, guid: 4817bd1a928da8746ab3c84fea53ebf7,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5293273807428994385, guid: 4817bd1a928da8746ab3c84fea53ebf7,
         type: 3}
