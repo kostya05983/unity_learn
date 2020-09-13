@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private float movementPeriod = .5f;
+    [SerializeField] ParticleSystem goalParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +21,17 @@ public class EnemyMovement : MonoBehaviour
         foreach (var block in path)
         {
             transform.position = block.transform.position;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(movementPeriod);
         }
+        SelfDestruct();
+    }
+    
+    private void SelfDestruct()
+    {
+        var vfx = Instantiate(goalParticle, transform.position, Quaternion.identity);
+        vfx.Play();
 
-        print("Ending patrol");
+        Destroy(vfx.gameObject, vfx.main.duration);
+        Destroy(gameObject);
     }
 }
